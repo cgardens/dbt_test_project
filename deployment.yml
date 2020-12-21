@@ -1,0 +1,10 @@
+# Choose the version of dbt that will run the project. Supported versions: 0.17.2, 0.18.0, 0.18.1.
+# If the version is not specified, the version 0.18.0 will be used.
+dbtVersion: 0.18.1
+
+jobs:
+ - name: every30minutes
+   schedule: '*/30 * * * *' # The example will run every 30 minutes. Note that the cron string is quoted as otherwise it will be treated as invalid alias node (see https://yaml.org/spec/1.2/spec.html#*%20alias// for details)
+   steps:
+     - name: run models
+       command: dbt run --models my_first_dbt_model my_second_dbt_model # This example will run two specific models.
